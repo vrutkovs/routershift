@@ -113,3 +113,11 @@ storage:
       mode: 0644
       contents:
         local: ./network/prevent-sleep.conf
+    - path: /etc/firewalld/zones/external.xml
+      mode: 0644
+      contents:
+        local: ./network/external.xml
+    - path: /etc/firewalld/zones/internal.xml
+      mode: 0644
+      contents:
+        local: ./network/internal.xml
