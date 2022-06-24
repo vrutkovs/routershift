@@ -8,7 +8,7 @@ rpm-ostree ex module enable cri-o:1.21
 rpm-ostree install cri-o cri-tools microshift
 
 # Install WiFi firmware
-rpm-ostree install iwl7260-firmware
+rpm-ostree install iwl7260-firmware NetworkManager-wifi
 
 # Install cockpit
 rpm-ostree install cockpit cockpit-networkmanager cockpit-podman cockpit-storaged
