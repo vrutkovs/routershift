@@ -97,11 +97,15 @@ storage:
           # Raise console message logging level from DEBUG (7) to WARNING (4)
           # to hide audit messages from the interactive console
           kernel.printk=4
+    - path: /etc/systemd/resolved.conf.d/no-dns-stub.conf
+      mode: 0644
+      contents:
+        local: ./network/no-dns-stub.conf
     - path: /etc/NetworkManager/system-connections/local-ap.nmconnection
-      mode: 0755
+      mode: 0644
       contents:
         local: ./network/local-ap.nmconnection
     - path: /srv/adguard/conf/AdGuardHome.yaml
-      mode: 0755
+      mode: 0644
       contents:
         local: ./network/AdGuardHome.yaml
