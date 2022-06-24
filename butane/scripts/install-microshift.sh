@@ -12,7 +12,6 @@ rpm-ostree install iwl7260-firmware NetworkManager-wifi
 
 # Install cockpit
 rpm-ostree install cockpit cockpit-networkmanager cockpit-podman cockpit-storaged
-systemctl enable cockpit.socket
 
 curl -L https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-4.10/openshift-client-linux.tar.gz -o /tmp/oc.tar.gz
 tar xzf /tmp/oc.tar.gz -C /usr/local/bin/
