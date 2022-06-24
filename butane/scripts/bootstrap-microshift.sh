@@ -18,8 +18,6 @@ function retry {
   done
 }
 
-systemctl enable --now firewalld cockpit.socket
-
 systemctl enable --now microshift
 
 OPERATOR_SDK_VERSION="v1.20.0"
