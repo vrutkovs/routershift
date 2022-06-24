@@ -13,6 +13,6 @@ spec:
   source:
     path: .
     repoURL: 'https://gitea.vrutkovs.eu/vadim/microshift-gitops.git'
-    targetRevision: HEAD
+    targetRevision: routershift
   syncPolicy:
     automated: {}
