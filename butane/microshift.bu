@@ -33,6 +33,26 @@ systemd:
 
         [Install]
         WantedBy=multi-user.target
+    - name: adguard.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=adguard
+        Wants=network-online.target
+        After=network-online.target
+
+        [Service]
+        ExecStartPre=-/usr/bin/mkdir /srv/adguard/work
+        ExecStartPre=-/usr/bin/podman rm -f adguard
+        ExecStartPre=/usr/bin/podman create --rm --name=adguard --privileged  --security-opt label=disable  --net=host -v /srv/adguard/work:/opt/adguardhome/work:z -v /srv/adguard/conf:/opt/adguardhome/conf:z  docker.io/adguard/adguardhome:v0.107.7
+        ExecStart=/usr/bin/podman start -a adguard
+        ExecStop=-/usr/bin/podman stop -t 10 adguard
+        ExecStop=-/usr/bin/podman rm -f adguard
+        Restart=always
+        RestartSec=60
+
+        [Install]
+        WantedBy=multi-user.target
     - name: bootstrap-microshift.service
       enabled: true
       contents: |
@@ -77,3 +97,11 @@ storage:
           # Raise console message logging level from DEBUG (7) to WARNING (4)
           # to hide audit messages from the interactive console
           kernel.printk=4
+    - path: /etc/NetworkManager/system-connections/local-ap.nmconnection
+      mode: 0755
+      contents:
+        local: ./network/local-ap.nmconnection
+    - path: /srv/adguard/conf/AdGuardHome.yaml
+      mode: 0755
+      contents:
+        local: ./network/AdGuardHome.yaml
