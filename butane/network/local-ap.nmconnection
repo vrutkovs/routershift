@@ -1,5 +1,5 @@
 [connection]
-id=Hotspot
+id=local-ap
 uuid=ba0c9fec-c412-45e3-9e0d-348bebc1b0ce
 type=wifi
 interface-name=wlp61s0
