@@ -2,6 +2,7 @@ ISO=fedora-coreos-36.20220605.3.0-live.x86_64.iso
 .PHONY: boot.ign microshift.ign
 
 $(ISO):
+	mkdir -p workdir
 	podman run --privileged --pull=always --rm -v ./workdir:/data -w /data quay.io/coreos/coreos-installer:release download -f iso
 
 boot.ign:
