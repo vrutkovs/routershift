@@ -1,18 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster
+  name: routernetes
   namespace: gitops
-  labels:
-    app.kubernetes.io/instance: gitops
 spec:
   destination:
-    namespace: gitops
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    path: .
+    path: apps/routernetes
     repoURL: 'https://github.com/vrutkovs/routershift'
-    targetRevision: routernetes-upstream
+    targetRevision: routernetes
   syncPolicy:
     automated: {}
