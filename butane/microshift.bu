@@ -109,3 +109,7 @@ storage:
       mode: 0644
       contents:
         local: ./network/AdGuardHome.yaml
+    - path: /etc/systemd/logind.conf.d/prevent-sleep.conf
+      mode: 0644
+      contents:
+        local: ./network/prevent-sleep.conf
